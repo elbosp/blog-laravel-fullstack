@@ -18,6 +18,7 @@
                             @pagination="handlePagination" 
                             @search="handleSearch" 
                             @sort="handleSort"
+                            @delete="deleteRow"
                         />
                     </div>
                 </div>
@@ -43,7 +44,8 @@ export default {
                 {key: 'name', sortable: true},
                 {key: 'phone', sortable: true},
                 {key: 'email', sortable: true},
-                {key: 'address', sortable: true}
+                {key: 'address', sortable: true},
+                {key: 'actions', sortable: false}
             ],
             items: [], //DEFAULT VALUE DARI ITEMS ADALAH KOSONG
             meta: [], //JUGA BERLAKU UNTUK META
@@ -107,6 +109,9 @@ export default {
             this.sortByDesc = val.sortDesc
 
             this.loadPostsData() //DAN LOAD DATA BARU BERDASARKAN SORT
+        },
+        deleteRow(val) {
+            alert(`Delete row id: ${val}`)
         }
     }
 }

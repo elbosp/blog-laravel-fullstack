@@ -30,7 +30,13 @@
             <!-- :ITEMS ADALAH DATA YANG AKAN DITAMPILKAN -->
             <!-- :FIELDS AKAN MENJADI HEADER DARI TABLE, MAKA BERISI FIELD YANG SALING BERKORELASI DENGAN ITEMS -->
             <!-- :sort-by.sync & :sort-desc.sync AKAN MENGHANDLE FITUR SORTING -->
-            <b-table striped hover :items="items" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty></b-table>   
+            <b-table striped hover :items="items" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" show-empty>
+                 <template v-slot:cell(actions)="row">
+                    <b-button variant="danger" @click="deleteRow(row.item.id)">
+                        Delete
+                    </b-button>
+                </template>
+            </b-table>   
         </div>
       
       	<!-- BAGIAN INI AKAN MENAMPILKAN JUMLAH DATA YANG DI-LOAD -->
@@ -111,6 +117,9 @@ export default {
         changePage(val) {
             //KIRIM EMIT DENGAN NAMA PAGINATION DAN VALUENYA ADALAH HALAMAN YANG DIPILIH OLEH USER
             this.$emit('pagination', val)
+        },
+        deleteRow(val) {
+            this.$emit('delete', val)
         },
         //KETIKA KOTAK PENCARIAN DIISI, MAKA FUNGSI INI AKAN DIJALANKAN
         //KITA GUNAKAN DEBOUNCE UNTUK MEMBUAT DELAY, DIMANA FUNGSI INI AKAN DIJALANKAN

@@ -1939,6 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
  //IMPORT COMPONENT DATATABLENYA
 
  //IMPORT AXIOS
@@ -1964,6 +1965,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         key: 'address',
         sortable: true
+      }, {
+        key: 'actions',
+        sortable: false
       }],
       items: [],
       //DEFAULT VALUE DARI ITEMS ADALAH KOSONG
@@ -1975,7 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
       //DEFAULT LOAD PERPAGE ADALAH 10
       search: '',
       sortBy: 'id',
-      //DEFAULT SORTNYA ADALAH CREATED_AT
+      //DEFAULT SORTNYA ADALAH ID
       sortByDesc: false //ASCEDING
 
     };
@@ -1989,7 +1993,6 @@ __webpack_require__.r(__webpack_exports__);
     loadPostsData: function loadPostsData() {
       var _this = this;
 
-      // let current_page = this.current_page == '' ? this.current_page : 1
       //LAKUKAN REQUEST KE API UNTUK MENGAMBIL DATA POSTINGAN
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/hospitals", {
         //KIRIMKAN PARAMETER BERUPA PAGE YANG SEDANG DILOAD, PENCARIAN, LOAD PERPAGE DAN SORTING.
@@ -2039,6 +2042,9 @@ __webpack_require__.r(__webpack_exports__);
       this.sortBy = val.sortBy;
       this.sortByDesc = val.sortDesc;
       this.loadPostsData(); //DAN LOAD DATA BARU BERDASARKAN SORT
+    },
+    deleteRow: function deleteRow(val) {
+      alert("Delete row id: ".concat(val));
     }
   }
 });
@@ -2056,6 +2062,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2170,6 +2182,9 @@ __webpack_require__.r(__webpack_exports__);
     changePage: function changePage(val) {
       //KIRIM EMIT DENGAN NAMA PAGINATION DAN VALUENYA ADALAH HALAMAN YANG DIPILIH OLEH USER
       this.$emit('pagination', val);
+    },
+    deleteRow: function deleteRow(val) {
+      this.$emit('delete', val);
     },
     //KETIKA KOTAK PENCARIAN DIISI, MAKA FUNGSI INI AKAN DIJALANKAN
     //KITA GUNAKAN DEBOUNCE UNTUK MEMBUAT DELAY, DIMANA FUNGSI INI AKAN DIJALANKAN
@@ -60831,7 +60846,8 @@ var render = function() {
                     per_page: _vm.handlePerPage,
                     pagination: _vm.handlePagination,
                     search: _vm.handleSearch,
-                    sort: _vm.handleSort
+                    sort: _vm.handleSort,
+                    delete: _vm.deleteRow
                   }
                 })
               ],
@@ -60966,7 +60982,28 @@ var render = function() {
             "update:sort-desc": function($event) {
               _vm.sortDesc = $event
             }
-          }
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "cell(actions)",
+              fn: function(row) {
+                return [
+                  _c(
+                    "b-button",
+                    {
+                      attrs: { variant: "danger" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteRow(row.item.id)
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    Delete\n                ")]
+                  )
+                ]
+              }
+            }
+          ])
         })
       ],
       1
