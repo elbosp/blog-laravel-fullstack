@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Hospital;
-use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
@@ -22,11 +21,11 @@ class HospitalController extends Controller
         ], 200);
     }
 
-    public function delete(Request $request)
+    public function delete()
     {
         return response()->json([
             'status' => 'success',
-            'data' => Hospital::destroy($request->id)
+            'data' => Hospital::destroy(request()->id)
         ], 200);
     }
 }
