@@ -111,7 +111,13 @@ export default {
             this.loadPostsData() //DAN LOAD DATA BARU BERDASARKAN SORT
         },
         deleteRow(val) {
-            alert(`Delete row id: ${val}`)
+            axios.delete(`/api/hospital`, {
+                data: {
+                    id: val
+                }
+            })
+
+            this.loadPostsData()
         }
     }
 }

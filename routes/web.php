@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/vue/datatables/hospitals', function () {
+Route::get('datatables/vue', function () {
     return view('datatables.vue');
 });

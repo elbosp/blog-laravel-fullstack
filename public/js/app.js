@@ -2044,7 +2044,12 @@ __webpack_require__.r(__webpack_exports__);
       this.loadPostsData(); //DAN LOAD DATA BARU BERDASARKAN SORT
     },
     deleteRow: function deleteRow(val) {
-      alert("Delete row id: ".concat(val));
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/api/hospital", {
+        data: {
+          id: val
+        }
+      });
+      this.loadPostsData();
     }
   }
 });

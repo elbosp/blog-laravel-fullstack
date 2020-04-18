@@ -21,4 +21,12 @@ class HospitalController extends Controller
             'data' => $hospitals
         ], 200);
     }
+
+    public function delete(Request $request)
+    {
+        return response()->json([
+            'status' => 'success',
+            'data' => Hospital::destroy($request->id)
+        ], 200);
+    }
 }
