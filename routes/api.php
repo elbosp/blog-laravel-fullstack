@@ -23,6 +23,3 @@ Route::middleware('auth:api')->group(function () {
 Route::resource('hospital', 'HospitalController', [
     'except' => ['edit', 'create', 'store', 'show', 'update']
 ]);
-
-Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
