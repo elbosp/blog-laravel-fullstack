@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
-
 Route::middleware('auth:api')->group(function () {
     Route::get('profile', 'UserController@get');
     Route::resource('product', 'ProductController', [
@@ -26,3 +23,6 @@ Route::middleware('auth:api')->group(function () {
 Route::resource('hospital', 'HospitalController', [
     'except' => ['edit', 'create', 'store', 'show', 'update']
 ]);
+
+Route::post('login', 'UserController@login');
+Route::post('register', 'UserController@register');
