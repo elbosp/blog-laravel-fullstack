@@ -28,8 +28,6 @@ class UserController extends Controller
         } else {
             return response()->json(['message' => 'Email or Password may be wrong'], 401);
         }
-
-        return response()->json();
     }
 
     public function register()
