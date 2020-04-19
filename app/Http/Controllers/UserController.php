@@ -26,7 +26,7 @@ class UserController extends Controller
         if (auth()->attempt($credentials)) {
             return response()->json(auth()->user()->createToken(auth()->user()->name));
         } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Email or Password may be wrong'], 401);
         }
 
         return response()->json();
