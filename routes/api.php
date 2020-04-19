@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('profile', 'UserController@get');
     Route::resource('product', 'ProductController', [
         'except' => ['edit', 'create']
     ]);
