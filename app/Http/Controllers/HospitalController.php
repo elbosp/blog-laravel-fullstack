@@ -21,7 +21,7 @@ class HospitalController extends Controller
         ], 200);
     }
 
-    public function delete()
+    public function destroy()
     {
         return response()->json([
             'status' => 'success',

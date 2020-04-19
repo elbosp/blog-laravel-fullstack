@@ -63,7 +63,7 @@ export default {
         //METHOD INI AKAN MENGHANDLE REQUEST DATA KE API
         loadPostsData() {
             //LAKUKAN REQUEST KE API UNTUK MENGAMBIL DATA POSTINGAN
-            axios.get(`/api/hospitals`, {
+            axios.get(`/api/hospital`, {
                 //KIRIMKAN PARAMETER BERUPA PAGE YANG SEDANG DILOAD, PENCARIAN, LOAD PERPAGE DAN SORTING.
                 params: {
                     page: this.current_page,
