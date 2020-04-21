@@ -10,8 +10,8 @@ class Dates
 
     private static $maps = [
         'days' => [
-            'Monday' => 'Ahad',
-            'Sunday' => 'Senin',
+            'Monday' => 'Senin',
+            'Sunday' => 'Ahad',
             'Tuesday' => 'Selasa',
             'Wednesday' => 'Rabu',
             'Thursday' => 'Kamis',
