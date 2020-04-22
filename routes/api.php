@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
-    Route::resource('product', 'ProductController', [
-        'except' => ['edit', 'create']
-    ]);
+Route::middleware('auth:api')->name('api.')->group(function ()
+{
+    Route::namespace('product')->group(function ()
+    {
+        Route::resource('product', 'ApiController');
+    });
 });
 
 Route::resource('hospital', 'HospitalController', [
-    'except' => ['edit', 'create', 'store', 'show', 'update']
+    'only' => ['index', 'destroy']
 ]);

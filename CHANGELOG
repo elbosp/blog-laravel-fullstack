@@ -1,0 +1,18 @@
+Mon, 20 Apr 2020
+
+Changed:
+1. I made AdminController and UserController because the return view is different
+2. I made ApiController for API CRUD
+3. I made ResourceController for API Repositories
+
+Issues:
+1. UserController and AdminController is still can be one if the different is only the return value
+   I can only use if for roles checking
+
+The Idea:
+1. From experience, Super User (Admin) and User has different behaviour so I still believe it's better to divide
+
+Tue, 21 Apr 2020
+
+Changed:
+1. I simplified by removed UserController and AdminController and replaced it with WebController
